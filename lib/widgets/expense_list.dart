@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_study2/models/expence.dart';
+import 'package:flutter_study2/widgets/expense_tile.dart';
 
 class ExpenseList extends StatelessWidget {
   const ExpenseList({super.key, required this.expenceList});
@@ -12,7 +13,9 @@ class ExpenseList extends StatelessWidget {
       child: ListView.builder(
         itemCount: expenceList.length,
         itemBuilder: (context, index) {
-          return Text(expenceList[index].title);
+          return ExpenseTile(
+            expense: expenceList[index],
+          );
         },
       ),
     );

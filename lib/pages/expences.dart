@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_study2/consts/colors.dart';
 import 'package:flutter_study2/models/expence.dart';
+import 'package:flutter_study2/widgets/add_new_expenses.dart';
 import 'package:flutter_study2/widgets/expense_list.dart';
 
 class Expences extends StatefulWidget {
@@ -27,9 +28,19 @@ class _ExpencesState extends State<Expences> {
     ),
   ];
 
+  //function to open a modal overlay
+  void _openAddExpencesOverlay() {
+    showModalBottomSheet(
+        context: context,
+        builder: (context) {
+          return AddNewExpenses();
+        });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.amber,
       appBar: AppBar(
         title: const Text(
           "Expence Master",
@@ -42,7 +53,7 @@ class _ExpencesState extends State<Expences> {
           Container(
             color: iconBackground,
             child: IconButton(
-              onPressed: () {},
+              onPressed: _openAddExpencesOverlay,
               icon: const Icon(
                 Icons.add,
                 color: Colors.white,
